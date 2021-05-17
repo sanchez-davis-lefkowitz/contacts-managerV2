@@ -6,12 +6,19 @@ import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 public class ContactsManagerV2 {
-
+    //Instances
     public static String directory = "./src/contactsIO/data";
     public static String filename = "contacts.txt";
     public static Path contactsTxtPath = Paths.get(directory,filename);
     public static Path dataDirectory = Paths.get(directory);
     public static Path dataFile = Paths.get(directory, filename);
+
+    //Main method
+    public static void main(String[] args) throws IOException{
+        System.out.println("\n\n\nWelcome to the contacts manager!\n");
+        mainMenu();
+    }
+
     //  CONTACTS
     public static void DisplayAllContacts() throws IOException {
 //        Path contactsTxtPath = Paths.get(directory,filename);
@@ -20,7 +27,9 @@ public class ContactsManagerV2 {
         for (int i = 0; i < contactsList.size(); i +=1){
             System.out.println((i + 1) + ": " + contactsList.get(i));
         }}
-    //Remove name
+
+
+    //Remove name method
     public static void removeName() throws IOException {
         Scanner cl = new Scanner(System.in);
         System.out.println("Please enter a name to delete \n");
@@ -47,6 +56,8 @@ public class ContactsManagerV2 {
 //        }
 //        return contactFound;
 //    }
+
+    //Search name method
     public static void searchName() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Search contact information by name: ");
@@ -69,6 +80,8 @@ public class ContactsManagerV2 {
             System.out.println("Sorry Contact not found");
         }
     }
+
+    //Add contacts method
     public static void addContact() throws IOException {
         String directory = "./src/contactsIO/data";
         String filename = "contacts.txt";
@@ -84,6 +97,7 @@ public class ContactsManagerV2 {
 //        Files.write(contactsTxtPath, Arrays.asList(inputContactFirstname + " " + inputContactLastname + " | " + inputContactPhoneNumber), StandardOpenOption.APPEND);
         Files.write(contactsTxtPath, Arrays.asList(inputContactFirstname + inputContactLastname + " | " + inputContactPhoneNumber), StandardOpenOption.APPEND);
     }
+
     // This is our main menu for our application.
     public static void mainMenu() throws IOException {
         Scanner ui = new Scanner(System.in);
@@ -124,9 +138,6 @@ public class ContactsManagerV2 {
             }
         }
     }
-    // Contact list for application
-    public static void main(String[] args) throws IOException{
-        System.out.println("\n\n\nWelcome to the contacts manager!\n");
-        mainMenu();
-    }
+
+
 }
